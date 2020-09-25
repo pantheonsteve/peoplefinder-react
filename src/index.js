@@ -6,7 +6,7 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import Edit from './components/Edit';
-import Create from './components/Create';
+import CreateForm from './components/Create';
 import Show from './components/Show';
 //import Header from './components/Header';
 
@@ -16,7 +16,7 @@ ReactDOM.render(
       <Route exact path='/' component={App} />
       <Route path='/edit:id' component={Edit} />
       <Route path='/show:id' component={Show} />
-      <Route path='/create' component={Create} />
+      <Route path='/create' component={CreateForm} />
     </div>
   </Router>,
   document.getElementById('root')

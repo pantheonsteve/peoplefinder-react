@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import firebase from './Firebase';
 import { Link } from 'react-router-dom';
 
-class Create extends Component {
+class CreateForm extends Component {
 
     constructor() {
         super();
@@ -18,6 +18,9 @@ class Create extends Component {
             birth_location: '',
             death_location: ''
         };
+
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange = (e) => {
@@ -29,7 +32,6 @@ class Create extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const { first_name, middle_name, last_name, birth_date, birth_location, married_date, death_date, death_location } = this.state;
-
         this.ref.add({
             first_name,
             middle_name,
@@ -44,7 +46,7 @@ class Create extends Component {
                 first_name: '',
                 middle_name: '',
                 last_name: '',
-                birth_date: '',
+                birth_date: birthdate,
                 married_date: '',
                 death_date: '',
                 birth_location: '',
@@ -55,6 +57,7 @@ class Create extends Component {
         .catch((error) => {
             console.error("Error adding document: ", error);
         });
+        console.log(this.state.birth_date.toString());
     }
 
     render() {
@@ -111,4 +114,4 @@ class Create extends Component {
     }
 }
 
-export default Create;
+export default CreateForm;

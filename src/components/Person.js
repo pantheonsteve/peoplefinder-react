@@ -1,22 +1,19 @@
 import React from "react";
 
 function Person (props) {
-  return (  
-    <div className="container">
-    <div className="row blue">
-      <h2>{props.firstname} {props.middlename} {props.lastname}</h2>
-      </div>
-      <div className="row">
-      <div className="col-9">
-  <p>Birth on {props.birthdate}</p>
-  <p>Married on {props.marriagedate}</p>
-  <p>Death on {props.deathdate}</p>
-  <p>Aged {props.age}</p>
-      </div>
-    </div>
-  <p>Welcome to page 2</p>
-  </div>
-)
+    return (  
+      <tr>
+      <td>{props.firstname}</td>
+      <td>{props.middlename}</td>
+      <td>{props.lastname}</td>
+      <td>{props.birthdate}</td>
+      <td>{props.birthplace}</td>
+      <td>{props.marriagedate}</td>
+      <td>{props.deathdate}</td>
+      <td>{props.deathplace}</td>
+      <td>{props.age}</td>
+    </tr>
+  )
 }
 
 export default Person;

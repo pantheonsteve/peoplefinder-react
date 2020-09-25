@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/App.css';
 import firebase from './Firebase';
-//import Person from './Person';
+import Person from './Person';
 
 class App extends Component {
   constructor(props) {
@@ -57,7 +57,7 @@ class App extends Component {
               PEOPLE LIST
             </h3>
             <div className="panel-body">
-            <h4><Link to="/create">Add Board</Link></h4>
+            <h4><Link to="/create">Add Person</Link></h4>
             <table className="table table-stripe">
               <thead>
                 <tr>
@@ -69,22 +69,23 @@ class App extends Component {
                   <th>Marriage Date</th>
                   <th>Death Date</th>
                   <th>Death Location</th>
-                  <th>ID</th>
+                  <th>Age</th>
                 </tr>
               </thead>
               <tbody>
-                {this.state.people.map(person =>
-                  <tr>
-                    <td>{person}</td>
-                    <td>{person.last_name}</td>
-                    <td>{person.birth_date}</td>
-                    <td>{person.birth_location}</td>
-                    <td>{person.married_date}</td>
-                    <td>{person.death_date}</td>
-                    <td>{person.death_location}</td>
-                    <td>{person.key}</td>
-                  </tr>
-                )}
+              {this.state.people.map(person => 
+              <Person key={person.key}
+              firstname={person.first_name} 
+              middlename={person.middle_name} 
+              lastname={person.last_name}
+              birthdate={new Date(person.birth_date.seconds*1000).toLocaleDateString('en-US')}
+              birthplace={person.birth_location}
+              marriagedate={new Date(person.married_date.seconds*1000).toLocaleDateString('en-US')}
+              deathdate={new Date(person.death_date.seconds*1000).toLocaleDateString('en-US')}
+              deathplace={person.death_location}
+              age ={Math.floor((person.death_date.seconds - person.birth_date.seconds)/60/60/24/365)}
+              />
+            )}
               </tbody>
             </table>
           </div>
