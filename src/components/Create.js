@@ -46,7 +46,7 @@ class CreateForm extends Component {
                 first_name: '',
                 middle_name: '',
                 last_name: '',
-                birth_date: birthdate,
+                birth_date: '',
                 married_date: '',
                 death_date: '',
                 birth_location: '',
