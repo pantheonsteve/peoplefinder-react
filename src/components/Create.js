@@ -32,13 +32,17 @@ class CreateForm extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const { first_name, middle_name, last_name, birth_date, birth_location, married_date, death_date, death_location } = this.state;
+        let birthdate = new firebase.firestore.Timestamp.fromDate(new Date(birth_date));
+        let marrieddate = new firebase.firestore.Timestamp.fromDate(new Date(married_date));
+        let deathdate = new firebase.firestore.Timestamp.fromDate(new Date(death_date));
+        console.log('birthday: ' + birthdate);
         this.ref.add({
             first_name,
             middle_name,
             last_name,
-            birth_date,
-            married_date,
-            death_date,
+            birth_date: birthdate,
+            married_date: marrieddate,
+            death_date: deathdate,
             birth_location,
             death_location
         }).then((docRef) => {
@@ -46,9 +50,9 @@ class CreateForm extends Component {
                 first_name: '',
                 middle_name: '',
                 last_name: '',
-                birth_date: '',
-                married_date: '',
-                death_date: '',
+                birth_date: birthdate,
+                married_date: marrieddate,
+                death_date: deathdate,
                 birth_location: '',
                 death_location: ''
             });
@@ -57,7 +61,6 @@ class CreateForm extends Component {
         .catch((error) => {
             console.error("Error adding document: ", error);
         });
-        console.log(this.state.birth_date.toString());
     }
 
     render() {

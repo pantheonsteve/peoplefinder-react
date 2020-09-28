@@ -12,7 +12,6 @@ class App extends Component {
     this.state = {
       people: []
     };
-    console.log('constructor');
   }
 
   onCollectionUpdate = (querySnapshot) => {
@@ -33,22 +32,13 @@ class App extends Component {
       });
   });
     this.setState({people: persons});
-    console.log('onCollectionUpdate');
-    console.log(this.state.people);
   }
 
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
-    console.log('componenteDidMount');
-    console.log(this.state.people);
   }
 
   render() {
-    console.log('render');
-    console.log(this.state.people);
-    console.log(Object.keys(this.state.people));
-    console.log(Object.entries(this.state.people));
-    console.log(Object.entries(this.state.people));
     return (
       <div className="container">
         <div className="panel panel-default">
