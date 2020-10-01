@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
-import firebase from './Firebase';
+import firebase from '../data/Firebase';
 import { Link } from 'react-router-dom';
 
 class CreateForm extends Component {

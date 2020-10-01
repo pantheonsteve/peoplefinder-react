@@ -7,16 +7,20 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import Edit from './components/Edit';
 import CreateForm from './components/Create';
-import Show from './components/Show';
+import Person from './components/Person';
+import PersonProfile from './pages/PersonProfile';
+import Test from './pages/Test';
 //import Header from './components/Header';
 
 ReactDOM.render(
   <Router>
     <div>
       <Route exact path='/' component={App} />
+      <Route path='/profile:id' component={PersonProfile} />
       <Route path='/edit:id' component={Edit} />
-      <Route path='/show:id' component={Show} />
+      <Route path='/person/:id' component={Person} />
       <Route path='/create' component={CreateForm} />
+      <Route path='/Test' component={Test} />
     </div>
   </Router>,
   document.getElementById('root')
